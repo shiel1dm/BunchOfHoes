@@ -5,7 +5,7 @@ class User extends Model {}
 
 User.init(
   {
-    location_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -22,6 +22,7 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
+    modelName: 'users'
   }
 )
 
