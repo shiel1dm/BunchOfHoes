@@ -1,5 +1,5 @@
-const User = require('./Users');
-const Post = require('./Posts');
+const User = require('./User');
+const Post = require('./Post');
 const Reply = require('./Reply');
 
 
