@@ -1,32 +1,68 @@
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Plantstuff</a>
-  <div class="container-fluid">
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/logout">Logout</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/sign-up">Sign Up</a></li>
-    </ul>
+<header class="page-header teal lighten-2">
+  <div class="container">
+    <div class="row">
+      <div class="col 16 s12">
+          <div class="nav-wrapper">
+               <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="grey-text text-lighten-3" href="#!">Login</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">Sign-up</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            </ul>
+          </div>
+      </div>
+    </div>
   </div>
-</nav>
+</header>
+
 
 <div class="container">
- <h1>Plantstuff</h1>
- <p>This is home page</p>
+ <h1 class="teal-text lighten-2 center-align">Plantstuff</h1>
+<div class="divider"></div>
 
+<body>
+
+  <div class="row">
+    <div class="col s8">
+        <div class="card-panel grey lighten-5 ">
+           <h5>Have a gardening question?</h5>
+            <p>Please choose the topic of your question:</p>
+                <div class="input-field">
+                    <input id="search" type="search" required></input><a class="waves-effect waves-light btn">Post</a>
+                  </div>
+          </div>
+    </div>
+  
+  <div class="col s4">
+  <div class="card-panel grey lighten-5 ">
+      <h5>Section 3</h5>
+        <p>Stuff</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="divider"></div>
+      <div class="row">
+        <div class="col s12">
+          <div class="card-panel grey lighten-5 z-depth-1">
+          {{#each posts}}
+              {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+
+
+
+      
+      
 <div class="posts">
     <div class="row justify-content-center">
-        {{#each posts}}
-        <div class="col-lg-7" style="margin-top: 50px;">
-            <div class="card">
-                    {{#if this.comments}}
-                    <ul class="list-group">
-                        {{#each this.comments}}
-                        <li class="list-group-item">{{this}}</li>
-                        {{/each}}
+        
                 </div>
             </div>
         </div>
-        {{/each}}
+
     </div>
-</div>
-</div>
