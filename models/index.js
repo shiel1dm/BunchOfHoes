@@ -1,6 +1,7 @@
-const User = require('./Users');
-const Post = require('./Posts');
-const Reply = require('./Reply');
+const User = require('./User');
+const Post = require('./Post');
+const Reply = require('./Reply')
+const Topic = require('./Topic')
 
 
 /** Setting relationship between User and the many tables that use it.
@@ -37,4 +38,4 @@ Reply.belongsTo(Post, {
   foreignKey: 'post_id'
 })
 
-module.exports = {User, Post, Reply}
+module.exports = {User, Post, Reply, Topic}
