@@ -1,8 +1,32 @@
-{{{header}}}
-
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Plantstuff</a>
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout">Logout</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/sign-up">Sign Up</a></li>
+    </ul>
+  </div>
+</nav>
 
 <div class="container">
  <h1>Plantstuff</h1>
  <p>This is home page</p>
- {{>posts posts=posts}}
+
+<div class="posts">
+    <div class="row justify-content-center">
+        {{#each posts}}
+        <div class="col-lg-7" style="margin-top: 50px;">
+            <div class="card">
+                    {{#if this.comments}}
+                    <ul class="list-group">
+                        {{#each this.comments}}
+                        <li class="list-group-item">{{this}}</li>
+                        {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
 </div>
