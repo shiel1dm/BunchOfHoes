@@ -1,11 +1,16 @@
 var router = require('express').Router();
+const { Model, Post } = require('../models/Post');
+const userRouter = require('./api/userRoutes');
+const homeRouter = require('./api/homeRoutes');
+const auth = require('./auth');
 
 router.get('/', function(req, res, next) {
-    res.render('home', {layout: 'main', template: 'home'});
+    res.render('home', {layout: 'main', view: 'home'});
 });
 
-router.get('/', (req, res) => {
-    res.render('home', { msg: 'This is home page'});
-});
+router.use(userRouter);
+router.use(homeRouter);
+router.use(auth);
+
 
 module.exports = router;

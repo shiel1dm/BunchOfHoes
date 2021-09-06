@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }))
 app.set('view engine', 'hbs');
 app.engine('hbs', handle({
   extname: 'hbs',
-  defaultView: 'main',
+  defaultView: 'home',
   layoutDir: __dirname + 'views/layouts'
 }));
 app.use(routes);
