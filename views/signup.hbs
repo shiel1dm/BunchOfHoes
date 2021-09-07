@@ -1,20 +1,38 @@
-{{#if message}}
-<div class="error">
-  <span style="color: red">{{message}}</span>
+<div class="container center">
+  <div class="row">
+    <div class="col s8 center">
+    <div class="card-panel center z-depth-5">
+      <h4 class="center teal-text text-darken-2"> Sign-up</h4>
+    
+        <div class="row ">
+
+          <div class="input-field col s12">
+            <i class="mdi-action-account-circle prefix "></i>
+            <input id="icon_prefix" type="text" class="validate">
+            <label for="icon_prefix">Username</label>
+          </div>
+
+          <div class="input-field col s12">
+            <i class="mdi-communication-email prefix"></i>
+            <input id="icon_email" type="email" class="validate">
+            <label for="icon_email">Your Email</label>
+          </div>
+
+          <div class="input-field col s12">
+            <i class="fa fa-unlock-alt prefix"></i>
+            <input id="icon_password" type="password" class="validate">
+            <label for="icon_password">Password</label>
+          </div>
+      </form>
+      </div>
+    <button class="btn waves-effect waves-light center" type="submit" name="action">Sign Up
+      <i class="fa fa-sign-in right"></i>
+    </button>
+     <div class="row">
+                        <div class="col-md-8">
+                           Already have an account? Sign-in <a href="login">here</a>
+                        </div>
+  </div>
 </div>
-{{/if}}
-<form action="/user" method="post">
-  <div>
-      <label>Username:</label>
-      <input type="text" name="username" />
-  </div>
-  <div>
-      <label>Password:</label>
-      <input type="password" name="password" />
-  </div>
-  <div>
-    <label>Confirm password:</label>
-    <input type="password" name="confirm-password" />
-  </div>
-  <button type="submit">Sign up</button>
-</form>
+</div>
+</div>
