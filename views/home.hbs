@@ -1,15 +1,14 @@
-
 <header>
-<div class="container teal darken-2 center">
-  <nav class="teal darken-2">
-    <div class="nav-wrapper container">
-      <ul class="right side-nav">
-         <li><a href="login">Log In</a></li>
-         <li><a href="signup">Sign-up</a></li>
-        <li><a href="posts">Post</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="container teal darken-2 center">
+    <nav class="teal darken-2">
+      <div class="nav-wrapper container">
+        <ul class="right side-nav">
+          <li><a href="login">Log In</a></li>
+          <li><a href="signup">Sign-up</a></li>
+          <li><a href="posts">Post</a></li>
+        </ul>
+      </div>
+    </nav>
     <div class="section no-pad-bot">
       <div class="container valign ">
         <h1 class="header center white-text text-darken-2">Plantstuff</h1>
@@ -21,120 +20,117 @@
       <br>
     </div>
   </div>
-  </header>
-  <br><br>
+</header>
+<br><br>
 
 <div class="container">
   <div class="row">
     <div class="col s6">
-  <div class="card-panel grey lighten-5 ">
-<header class="masthead">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="page-heading">
-          <h4 class="teal-text test-darken-2">Have a Question?</h4>
-          <h6>Ask your online gardening community</h6>
+      <div class="card-panel grey lighten-5 ">
+        <header class="masthead">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                  <h4 class="teal-text test-darken-2">Have a Question?</h4>
+                  <h6>Ask your online gardening community</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <form action="/posts/store" method="POST">
+                <div class="control-group">
+                  <label> Topic </label>
+                  <input type="options">
+                  <div>
+                    {{#each topics}}
+                    {{topic_name}}
+                    {{/each}}
+                  </div>
+                  <div class="form-group floating-label-form-group controls">
+                    <label>Title</label>
+                    <input type="text" name="title" placeholder="Title" class="form-control">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls">
+                    <label>Description</label>
+                    <input type="text" name="description" placeholder="Description" class="form-control">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls">
+                    <label>Content</label>
+                    <textarea name="content" placeholder="Content ..." cols="30" rows="10"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="form-group my-4 text-center">
+                  <button class="btn btn-primary">Post Question</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</header>
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <form action="/posts/store" method="POST">
-        <div class="control-group">
-          <label> Topic </label>
-          <input type="options"> 
-          <div> 
-            {{#each topics}}
-            {{topic_name}}
-            {{/each}}
-          </div>
-          <div class="form-group floating-label-form-group controls">
-            <label>Title</label>
-            <input type="text" name="title" placeholder="Title" class="form-control">
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="form-group floating-label-form-group controls">
-            <label>Description</label>
-            <input type="text" name="description" placeholder="Description" class="form-control">
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="form-group floating-label-form-group controls">
-            <label>Content</label>
-            <textarea name="content" placeholder="Content ..." cols="30" rows="10" class="form-control"></textarea>
-          </div>
-        </div>
-        <div class="form-group my-4 text-center">
-          <button class="btn btn-primary">Post Question</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-  
-  <div class="col s6">
-  <div class="card-panel grey lighten-5 ">
-    <div>{{>posts}}</div>
+    <div class="col s6">
+      <div class="card-panel grey lighten-5 ">
+        <div>{{>posts}}</div>
       </div>
     </div>
   </div>
 
 
   <div class="divider"></div>
-      <div class="row">
-        <div class="col s12">
-          <div class="card-panel grey lighten-5 z-depth-1">
-         {{#each posts}}
-          <div class="card-panel grey lighten-5 z-depth-1">
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel grey lighten-5 z-depth-1">
+        {{#each posts}}
+        <div class="card-panel grey lighten-5 z-depth-1">
           <h4 class="teal-text text-darken-2"> {{title}}</h4>
           <p>{{posts_id}}</p>
           <p>
-            {{body}}</p></div>
-          </p>
-          {{/each}}
-    
-          </div>
+            {{body}}</p>
+        </div>
+        </p>
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+  </body>
+  <footer class="page-footer teal darken-2">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+
+          </ul>
         </div>
       </div>
-  </body>
+    </div>
 
 
 
+</div>
 
-    
-<footer class="page-footer teal darken-2">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                 
-                </ul>
-              </div>
-            </div>
-          </div>
+</footer>
 
-
-           
-            </div>
-
-        </footer>
-            
 </html>
