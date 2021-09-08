@@ -1,14 +1,29 @@
 [
   {
-    "topic_name": "annuals"
+    "topic_name": "Annuals"
   },
   {
-    "topic_name": "perrenials"
+    "topic_name": "Perrenials"
   },
   {
-    "topic_name": "herbs"
+    "topic_name": "Herbs"
   },
   {
-    "topic_name": "vegetables"
+    "topic_name": "Vegetables"
+  },
+  {
+    "topic_name": "Fertilizer"
+  },
+  {
+    "topic_name": "Pest Constrol"
+  },
+  {
+    "topic_name": "Flowering Bushes"
+  },
+  {
+    "topic_name": "Succulents"
+  },
+  {
+    "topic_name": "Lawn Care"
   }
 ]
