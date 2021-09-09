@@ -11,20 +11,27 @@ const Post = require('../../models/Post');
 //     });
 // });
 
-//not working
-router.get('/:id', function(req, res, next) {
+router.get("/:id", (req, res) => {
     Post.findOne({
-        where: {
-            post_id: req.params.id,
-        },
-        attributes: [`post_id`, `title`, `body`, `user_id`],
-    }).then((postData) => {
-        const posts = postData.map((post) => post.get({ plain: true }));
-        res.render('login', {posts, layout: 'main', view: 'login'});
-        console.log("issa post "+posts);
-}).catch((err) => {
-        res.json(err);
-    });
+      where: {
+        post_id: req.params.id,
+      },
+      attributes: ["post_id", "title", "body", "user_id"],
+    }) 
+      .then((postData) => {
+        if (!postData) {
+          res.status(404).json({ message: "No Post found with this id" });
+          return;
+        }
+        // console.log("postData: "+postData);
+        const post = postData.get({ plain: true });
+        // console.log(post);
+        res.render('indivpost', {post, layout: 'main', view: 'indivpost'});
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
 });
 
 router.post('/new', (req, res) => {
