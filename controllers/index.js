@@ -1,15 +1,18 @@
 var router = require('express').Router();
-const { Model, Post, Topic, User, Reply } = require('../models/Post');
+const { Model, Post, Topic, User, Reply } = require('../models');
 const userRouter = require('./api/userRoutes');
-const homeRouter = require('./api/homeRoutes');
+const blogRouter = require('./api/blogRoutes');
 const auth = require('./auth');
 
 router.get('/', function(req, res, next) {
-    res.render('home', {layout: 'main', view: 'home'});
+    Post.findAll().then((postData) => {
+        const posts = postData.map((post) => post.get({ plain: true }));
+        res.render('home', {posts, layout: 'main', view: 'home'});
+    });
 });
 
 router.use(userRouter);
-router.use(homeRouter);
+router.use('/blogRoutes', blogRouter);
 router.use(auth);
 
 

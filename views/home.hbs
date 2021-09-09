@@ -93,18 +93,15 @@
   <div class="divider"></div>
   <div class="row">
     <div class="col s12">
-      <div class="card-panel grey lighten-5 z-depth-1">
         {{#each posts}}
+        <a href="/blogRoutes/{{post_id}}">
         <div class="card-panel grey lighten-5 z-depth-1">
           <h4 class="teal-text text-darken-2"> {{title}}</h4>
-          <p>{{posts_id}}</p>
-          <p>
-            {{body}}</p>
+          <p>{{body}}</p>
         </div>
         </p>
-        {{/each}}
-
-      </div>
+        </a>
+        {{/each }}
     </div>
   </div>
   </body>
