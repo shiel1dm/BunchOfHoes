@@ -89,6 +89,7 @@
       <div class="card-panel grey lighten-5 z-depth-1">
         <h4 class="teal-text text-darken-2 center"> Recent Posts</h4>
         {{#each posts}}
+        <a href="/blogRoutes/{{post_id}}">
         <div class="card-panel grey lighten-5 z-depth-1">
           <h6 class="teal-text"> {{title}}</h6>
           <p>{{posts_id}}</p>
@@ -96,9 +97,8 @@
             {{body}}</p>
         </div>
         </p>
-        {{/each}}
-
-      </div>
+        </a>
+        {{/each }}
     </div>
   </div>
 
