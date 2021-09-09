@@ -1,4 +1,5 @@
-<header>
+
+  <header>
   <div class="container teal darken-2 center">
     <nav class="teal darken-2">
       <div class="nav-wrapper container">
@@ -12,7 +13,6 @@
     <div class="section no-pad-bot">
       <div class="container valign ">
         <h1 class="header center white-text text-darken-2">Plantstuff</h1>
-        <div class="row center">
           <h5 class="header col s12 light white-text text">your online garden community</h5>
         </div>
         <br>
@@ -33,8 +33,8 @@
             <div class="row">
               <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="page-heading">
-                  <h4 class="teal-text test-darken-2">Have a Question?</h4>
-                  <h6>Ask your online gardening community</h6>
+                  <h5 class="teal-text text-darken-2">Have a Question?</h5>
+                  <h6>Ask it here!</h6>
                 </div>
               </div>
             </div>
@@ -46,19 +46,12 @@
           <div class="row">
             <div class="col-md-8 offset-md-2">
               <form action="/posts/store" method="POST">
-                <div class="control-group">
-                  <label> Topic </label>
-                  <input type="options">
-                  <div>
-                    {{#each topics}}
-                    {{topic_name}}
-                    {{/each}}
+                <div class="control-group">                                                          
+      </div>             
+          <div class="form-group floating-label-form-group controls">
+            <label> Topic</label>
+                    <input type="text" name="topic" placeholder="Topic" class="form-control">
                   </div>
-                  <div class="form-group floating-label-form-group controls">
-                    <label>Title</label>
-                    <input type="text" name="title" placeholder="Title" class="form-control">
-                  </div>
-                </div>
                 <div class="control-group">
                   <div class="form-group floating-label-form-group controls">
                     <label>Description</label>
@@ -93,15 +86,39 @@
   <div class="divider"></div>
   <div class="row">
     <div class="col s12">
+      <div class="card-panel grey lighten-5 z-depth-1">
+        <h4 class="teal-text text-darken-2 center"> Recent Posts</h4>
         {{#each posts}}
         <a href="/blogRoutes/{{post_id}}">
         <div class="card-panel grey lighten-5 z-depth-1">
-          <h4 class="teal-text text-darken-2"> {{title}}</h4>
-          <p>{{body}}</p>
+          <h6 class="teal-text"> {{title}}</h6>
+          <p>{{posts_id}}</p>
+          <p>
+            {{body}}</p>
         </div>
         </p>
         </a>
         {{/each }}
+    </div>
+  </div>
+
+
+
+
+  <div class="divider"></div>
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel grey lighten-5 z-depth-1">
+        <h4 class="teal-text text-darken-2 center"> Recent Posts</h4>
+        {{#each topic}}
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <h6 class="teal-text"> {{topic_name}}</h6>
+          <p>{{id}}</p>
+        </div>
+        </p>
+        {{/each}}
+
+      </div>
     </div>
   </div>
   </body>
