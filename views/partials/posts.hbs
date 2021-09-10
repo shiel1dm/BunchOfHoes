@@ -15,13 +15,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <form action="/posts/store" method="POST">
+      <form>
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Title</label>
-            <input type="text" name="title" placeholder="Title" class="form-control">
+            <input type="text" id="post-title" placeholder="Title" class="form-control">
           </div>
         </div>
+            <form>
+            <label for='topics'>Select a Topic:</label>
+            <select name='topics'>
+              <option value='id'>topic 1</option>
+            </select>
+            </form>
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Description</label>
@@ -31,13 +37,14 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Content</label>
-            <textarea name="content" placeholder="Content ..." cols="30" rows="10" class="form-control"></textarea>
+            <textarea id="post-body" placeholder="Content ..." cols="30" rows="10" class="form-control"></textarea>
           </div>
         </div>
         <div class="form-group my-4 text-center">
-          <button class="btn btn-primary">Create Post</button>
+          <button class="btn btn-primary" id='create-post-btn'>Create Post</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+<script src='/js/create-post.js'></script>
