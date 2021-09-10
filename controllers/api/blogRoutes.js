@@ -37,7 +37,8 @@ router.get("/:id", (req, res) => {
 router.post('/new', (req, res) => {
     Post.create({
         title: req.body.title,
-        body: req.body.body
+        body: req.body.body,
+        topic_id: req.body.topic_id
     }).then((postData) => {
             console.log(postData);
             document.location.replace('/');
