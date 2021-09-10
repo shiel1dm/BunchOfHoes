@@ -1,14 +1,14 @@
 [
   {
-    "username": "tomatoking",
+    "email": "tomatoking@test.com",
     "password": "beefsteak2"
   }, 
   {
-    "username": "gardengal",
+    "email": "gardengal@test.com",
     "password": "password1"
   },
   {
-    "username": "shiel1dm",
+    "email": "shiel1dm@test.com",
     "password": "test"
   }
 ]

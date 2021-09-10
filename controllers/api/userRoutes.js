@@ -1,37 +1,47 @@
 const router = require('express').Router();
-const path =  require('path');
+const { User } = require('../../models')
 
-router.get('/login', (req, res) => {
-	res.render('login', {layout: 'main', view: 'login'});
-});
+router.post('/login', async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { email: req.body.email } })
 
-router.post('/auth', function(req, res) {
-	var username = req.body.username;
-	var password = req.body.password;
-	if (username && password) {
-		connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
-			if (results.length > 0) {
-				req.session.loggedin = true;
-				req.session.username = username;
-				res.redirect('/home');
-			} else {
-				res.send('Incorrect Username and/or Password!');
-			}			
-			res.end();
-		});
-	} else {
-		res.send('Please enter Username and Password!');
-		res.end();
-	}
-});
+    if (!userData){
+      res
+        .status(400)
+        .json({ message: 'Email incorrect, please try again.'})
+      return;      
+    }
 
-router.get('/home', function(req, res) {
-	if (req.session.loggedin) {
-		res.send('Welcome back, ' + req.session.username + '!');
-	} else {
-		res.send('Please login to view this page!');
-	}
-	res.end();
-});
+    const validPass = await userData.checkPassword(req.body.password)
 
-module.exports = router;
+    if (!validPass) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect password'})
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id
+      req.session.logged_in = true
+
+      res.json({ user: userData, message: 'Logged in' })
+    })
+
+  } catch (err) {
+    res.status(400).json(err)
+  }
+})
+
+// router.post('/logout', (req, res) => {
+//   if (req.session.logged_in) {
+//     req.session.destroy(() => {
+//       res.status(204).end();
+//     });
+//   } else {
+//     res.status(404).end();
+//   }
+// });
+
+module.exports = router
+
