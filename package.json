@@ -2,6 +2,9 @@
   "name": "bunchofhoes",
   "version": "1.0.0",
   "description": "Gardening blog",
+  "engines": {
+    "node": "14.17.3"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
