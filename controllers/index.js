@@ -4,11 +4,16 @@ const userRouter = require('./api/userRoutes');
 const blogRouter = require('./api/blogRoutes');
 const auth = require('./auth');
 
-router.get('/', function(req, res, next) {
-    Post.findAll().then((postData) => {
-        const posts = postData.map((post) => post.get({ plain: true }));
-        res.render('home', {posts, layout: 'main', view: 'home'});
-    });
+router.get('/', async function(req, res, next) {
+    const postData = await Post.findAll()
+    const posts = postData.map((post) => post.get({ plain: true }));
+    // console.log(posts)
+
+    const topicData = await Topic.findAll()
+    const topics = topicData.map((topic) => topic.get({ plain: true }));
+    console.log(topics)
+
+    res.render('home', {posts, topics, layout: 'main', view: 'home'});
 });
 
 router.use(userRouter);
