@@ -6,11 +6,12 @@ const {
     User,
     Reply
 } = require('../models');
-const userRouter = require('./api/userRoutes');
-const blogRouter = require('./api/blogRoutes');
-const auth = require('./auth');
+const apiRoutes = require('./api')
+//const blogRouter = require('./api/blogRoutes');
+const homeRoutes = require('./homeRoutes');
+const withAuth = require('../utils/auth');
 
-router.get('/', async function (req, res, next) {
+router.get('/', withAuth, async function (req, res) {
     const postData = await Post.findAll()
     const posts = postData.map((post) => post.get({
         plain: true
@@ -31,9 +32,10 @@ router.get('/', async function (req, res, next) {
     });
 });
 
-router.use(userRouter);
-router.use('/blogRoutes', blogRouter);
-router.use(auth);
+router.use('/api', apiRoutes);
+
+router.use('/', homeRoutes)
+
 
 
 module.exports = router;
