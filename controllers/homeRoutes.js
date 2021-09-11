@@ -14,9 +14,9 @@ router.get('/', withAuth, async (req,res) => {
     }   
 });
 
-router.get('/signup', async (req, res) => {
+/*router.get('/signup', async (req, res) => {
   res.render('signup')
-})
+})*/
 
 router.get('/login', async (req,res) => {
   try{  
@@ -31,9 +31,9 @@ router.get('/login', async (req,res) => {
 });
 
 
-router.post('/login', async (req, res) => {
+/*router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { username: req.body.email } })
+    const userData = await User.findOne({ where: { username: req.body.username } })
     
     if (!userData){
        
@@ -55,12 +55,11 @@ router.post('/login', async (req, res) => {
 
     console.log('made through loop')
 
-    user.get({plain: true})
+    //user.get({plain: true})
  
     req.session.save(() => {
-      req.sessioncookie.user = userData
-      req.session.logged_in = true
- 
+      req.session.logged_in = true;
+      res.status(200);
       res.json({ user: userData, message: 'Logged in' })
     })
  
@@ -68,7 +67,7 @@ router.post('/login', async (req, res) => {
      
     res.status(400).json({message: 'ugh'})
    }
- })
+ });
 
 router.post('/signup', async (req, res) => {
   console.log(req.body)
@@ -81,7 +80,7 @@ router.post('/signup', async (req, res) => {
       return res.redirect('/signup');
     }
     const userData = User.create({
-      username: req.body.email,
+      username: req.body.username,
       password: req.body.password,
     })
   
@@ -97,7 +96,7 @@ router.post('/signup', async (req, res) => {
         console.log(err);
         res.status(500).json(err)
     }
-  })
+  })*/
      
 
 
