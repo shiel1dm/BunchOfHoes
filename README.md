@@ -27,7 +27,7 @@ create a post, reply to a post,  post a question, and edit or delete a post.
 ```
 
 ### Deployment:<br>
-https://salty-ravine-80374.herokuapp.com/<br><br>
+Check it out [here.](https://salty-ravine-80374.herokuapp.com/)<br><br>
 ***Dependencies:***<br>
 ```
 "bcrypt": "^5.0.0",
