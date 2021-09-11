@@ -1,3 +1,4 @@
+
 # Garden Gathering
 
 ```md
@@ -62,3 +63,4 @@ https://salty-ravine-80374.herokuapp.com/<br><br>
 "sequelize": "^6.6.5"
 ```    
 
+![Screen Shot 2021-09-11 at 8 29 43 AM](https://user-images.githubusercontent.com/83424339/132947950-f064a8d6-fc68-49df-aacb-b29455243ff1.png)
