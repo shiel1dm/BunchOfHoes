@@ -29,7 +29,6 @@ let parseWeather = function (weatherText) {
     let weatherJSON = JSON.parse(weatherText);
     console.log(weatherJSON);
     let description = weatherJSON.current.weather_descriptions[0];
-    let icon = weatherJSON.current.weather_icons[0];
     let feelsLike = weatherJSON.current.feelslike;
     let temp = weatherJSON.current.temperature;
     let precip = weatherJSON.current.precip;

@@ -11,7 +11,7 @@ const apiRoutes = require('./api')
 const homeRoutes = require('./homeRoutes');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async function (req, res) {
+/*router.get('/', withAuth, async function (req, res) {
     const postData = await Post.findAll()
     const posts = postData.map((post) => post.get({
         plain: true
@@ -31,7 +31,7 @@ router.get('/', withAuth, async function (req, res) {
         view: 'home'
     });
 });
-
+*/
 router.use('/api', apiRoutes);
 
 router.use('/', homeRoutes)
