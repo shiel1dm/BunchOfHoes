@@ -22,8 +22,8 @@ When I visit the home page,
 Then I am able to either create a new log in <br>
 or sign in to an exisiting one.
 When I am logged in,
-Then I am able to browse recent posts, browse posts by categories,<br>
-create a post, reply to a post,  post a question, and edit or delete a post.
+Then I am able to browse recent posts, <br>
+create a post, and edit or delete a post.
 ```
 
 ### Deployment:<br>
