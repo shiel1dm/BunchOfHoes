@@ -1,29 +1,52 @@
 const router = require('express').Router();
-const { User } = require('../models')
+const { User, Post, Topic } = require('../models');
+const { sync } = require('../models/User');
 const withAuth = require('../utils/auth')
 
-router.get('/', withAuth, async (req,res) => {
-  try {
+// router.get('/', withAuth, async (req,res) => {
+//   try {
       
-    res.render('home', {
-      users: req.session.user,
-      logged_in: req.session.logged_in,
-    })
-  }catch (err) {
-      res.status(500).json(err)
-    }   
+//     res.render('home', {
+//       users: req.session.user,
+//       logged_in: req.session.logged_in,
+//     })
+//   }catch (err) {
+//       res.status(500).json(err)
+//     }   
+// });
+
+router.get('/', withAuth, async function (req, res) {
+  const postData = await Post.findAll()
+  const posts = postData.map((post) => post.get({
+      plain: true
+  }));
+  // console.log(posts)
+
+  const topicData = await Topic.findAll()
+  const topics = topicData.map((topic) => topic.get({
+      plain: true
+  }));
+  console.log(topics)
+
+  res.render('home', {
+      posts,
+      topics,
+      layout: 'main',
+      view: 'home'
+  });
 });
 
+// router.get('/', withAuth, async (req,res) => {
+// res.render()
+// });
 /*router.get('/signup', async (req, res) => {
   res.render('signup')
 })*/
 
 router.get('/login', async (req,res) => {
   try{  
-      if (req.session.logged_in) {
-        res.redirect('/');
-    
-    } res.render('login')
+       
+     res.render('login')
   }catch (err){
     res.status(500).json(err)
   }
@@ -31,7 +54,7 @@ router.get('/login', async (req,res) => {
 });
 
 
-/*router.post('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { username: req.body.username } })
     
@@ -69,34 +92,38 @@ router.get('/login', async (req,res) => {
    }
  });
 
-router.post('/signup', async (req, res) => {
-  console.log(req.body)
-  try{
-    const { body } = req;
+ router.get('/signup', async (req, res) => {
+   res.render('signup');
+ });
+
+// router.post('/signup', async (req, res) => {
+//   console.log(req.body)
+//   try{
+//     const { body } = req;
     
-    if (!body.username || !body.password) {
-      console.log(body)
-      res.status(404).json({ message: 'All fields are required!'});
-      return res.redirect('/signup');
-    }
-    const userData = User.create({
-      username: req.body.username,
-      password: req.body.password,
-    })
+//     if (!body.username || !body.password) {
+//       console.log(body)
+//       res.status(404).json({ message: 'All fields are required!'});
+//       return res.redirect('/signup');
+//     }
+//     const userData = User.create({
+//       username: req.body.username,
+//       password: req.body.password,
+//     })
   
 
-    req.session.save(() => {
-      req.session.user = userData;
-      req.session.logged_in = true;
+//     req.session.save(() => {
+//       req.session.user = userData;
+//       req.session.logged_in = true;
 
-      res.json({user: userData, message: 'signed up'})
+//       res.json({user: userData, message: 'signed up'})
 
-    })
-  }catch (err) {
-        console.log(err);
-        res.status(500).json(err)
-    }
-  })*/
+//     })
+//   }catch (err) {
+//         console.log(err);
+//         res.status(500).json(err)
+//     }
+//   })
      
 
 

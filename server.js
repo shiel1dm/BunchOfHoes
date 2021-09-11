@@ -10,9 +10,7 @@ const SequelizeStore =require('connect-session-sequelize')(session.Store)
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 const sess = {
   secret: 'plants',
@@ -32,8 +30,11 @@ app.engine('hbs', handle({
   defaultView: 'home',
   layoutDir: __dirname + 'views/layouts'
 }));
-app.use(routes);
-      
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(routes);      
 // port where app is served
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening to port ${PORT}`))

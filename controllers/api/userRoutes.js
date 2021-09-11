@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const { User } = require('../../models');
 
 router.post('/login', async (req, res) => {
+  console.log(req.body);
     //try {
       const userData = await User.findOne({ where: { username: req.body.username } });
   
@@ -36,7 +37,7 @@ router.post('/login', async (req, res) => {
 
 
 router.post('/signup', async (req, res) => {
-   try{
+  //  try{
     const userData = await User.create({
       username: req.body.username,
       password: req.body.password
@@ -48,9 +49,9 @@ router.post('/signup', async (req, res) => {
 
       res.json({ user: userData, message: 'signed up'})
     });
-  } catch (err){
-    res.status(400).json(err);
-  }
+  // } catch (err){
+  //   res.status(400).json(err);
+  // }
 })
 
 // router.post('/auth', function(req, res) {

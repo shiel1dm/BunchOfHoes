@@ -10,6 +10,26 @@ const Post = require('../../models/Post');
 //         console.log(posts);
 //     });
 // });
+// router.get('/', withAuth, async function (req, res) {
+//   const postData = await Post.findAll()
+//   const posts = postData.map((post) => post.get({
+//       plain: true
+//   }));
+//   // console.log(posts)
+
+//   const topicData = await Topic.findAll()
+//   const topics = topicData.map((topic) => topic.get({
+//       plain: true
+//   }));
+//   console.log(topics)
+
+//   res.render('home', {
+//       posts,
+//       topics,
+//       layout: 'main',
+//       view: 'home'
+//   });
+// });
 
 router.get("/:id", (req, res) => {
     Post.findOne({
